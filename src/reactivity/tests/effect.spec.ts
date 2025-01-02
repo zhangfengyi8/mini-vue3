@@ -41,20 +41,21 @@ describe('effect', () => {
             run = runner
         })
         const obj = reactive({ foo: 1 })
+        // 在这里将 scheduler 作为一个 option 传入 effect
         const runner = effect(
             () => {
                 dummy = obj.foo
             },
             { scheduler }
         )
-
         expect(scheduler).not.toHaveBeenCalled()
+        // 会执行一次 effect 传入的 fn
         expect(dummy).toBe(1)
-
         obj.foo++
+        // 有了 scheduler 之后，原来的 fn 就不会执行了
         expect(scheduler).toHaveBeenCalledTimes(1)
         expect(dummy).toBe(1)
-        runner()
+        run()
         expect(dummy).toBe(2)
     })
 })
