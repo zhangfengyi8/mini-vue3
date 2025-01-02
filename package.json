@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "jest": "^29.7.0",
+    "typescript": "^5.7.2"
+  },
+  "name": "mini-vue3",
+  "description": "这是一个vue3的简易版本",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/jest": "^29.5.14",
+    "@types/mocha": "^10.0.10",
+    "babel-jest": "^29.7.0",
+    "yarn": "^1.22.22"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangfengyi8/mini-vue3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangfengyi8/mini-vue3/issues"
+  },
+  "homepage": "https://github.com/zhangfengyi8/mini-vue3#readme"
+}
