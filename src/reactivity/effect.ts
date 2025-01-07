@@ -5,7 +5,7 @@ let activeEffect
 let shouldTrack
 
 //effect就是依赖
-class ReactiveEffect {
+export class ReactiveEffect {
     private _fn: any
     deps = []
     active = true
@@ -78,6 +78,9 @@ export function trackEffects(dep) {
 
 export function trigger(target, key) {
     let depsMap = targetMap.get(target)
+    if (!depsMap) {
+        return
+    }
     let dep = depsMap.get(key)
 
     triggerEffects(dep)
