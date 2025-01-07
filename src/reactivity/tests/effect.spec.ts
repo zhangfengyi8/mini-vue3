@@ -1,5 +1,5 @@
 import { reactive } from "../reactive"
-import { effect } from "../effect"
+import { effect, stop } from "../effect"
 
 describe('effect', () => {
     it('happy path', () => {
@@ -58,4 +58,40 @@ describe('effect', () => {
         run()
         expect(dummy).toBe(2)
     })
+
+    it("stop", () => {
+        let dummy;
+        const obj = reactive({ prop: 1 });
+        const runner = effect(() => {
+          dummy = obj.prop;
+        }); 
+        obj.prop = 2;
+        expect(dummy).toBe(2);
+        stop(runner);
+
+        // get set
+        // obj.prop++; 先进行了get, 又进行了依赖收集，所以stop清除依赖无效
+        obj.prop++;
+        expect(dummy).toBe(2);
+    
+        // stopped effect should still be manually callable
+        runner();
+        expect(dummy).toBe(3);
+      });
+
+      it("onStop", () => {
+        const obj = reactive({
+            foo: 1
+        })
+        const onStop = jest.fn();
+        let dummy
+        const runner = effect(() => {
+          dummy = obj.foo
+        }, {
+            onStop
+        });
+    
+        stop(runner);
+        expect(onStop).toBeCalledTimes(1);
+      });
 })
