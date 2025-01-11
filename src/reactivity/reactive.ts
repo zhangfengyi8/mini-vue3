@@ -1,5 +1,5 @@
 import { track, trigger } from "./effect"
-import { isObject } from "../shared"
+import { isObject } from "../shared/index"
 
 function createGetter(isReadOnly = false, shallow = false) {
     return function get(target, key) {
@@ -59,13 +59,18 @@ export function readonly(raw) {
 
 //浅只读
 export function shallowReadonly(raw) {
-    return new Proxy(raw, {
-        get: createGetter(true, true),
-        set(target, key, value) {
-            console.warn('shallowReadonly')
-            return true
-        }
-    })
+    if(!isObject(raw)) {
+        console.warn(`target ${raw} 必须是一个对象`)
+        return raw
+    } else {
+        return new Proxy(raw, {
+            get: createGetter(true, true),
+            set(target, key, value) {
+                console.warn('shallowReadonly')
+                return true
+            }
+        })
+    }
 }
 
 export function isReactive(target) {

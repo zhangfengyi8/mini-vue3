@@ -1,23 +1,29 @@
 {
   "dependencies": {
     "jest": "^29.7.0",
+    "tslib": "^2.8.1",
     "typescript": "^5.7.2"
   },
   "name": "mini-vue3",
   "description": "这是一个vue3的简易版本",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/guide-mini-vue.cjs.js",
+  "module": "lib/guide-mini-vue.esm.js",
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-typescript": "^7.26.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.2",
     "@types/jest": "^29.5.14",
     "@types/mocha": "^10.0.10",
     "babel-jest": "^29.7.0",
     "yarn": "^1.22.22"
   },
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watch",
+    "build": "rollup -c rollup.config.js --watch"
   },
   "repository": {
     "type": "git",
