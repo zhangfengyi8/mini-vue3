@@ -9,3 +9,4 @@ export function hasChanged(value, oldValue) {
 }
 
 export const hasOwn = (val, key) => Object.prototype.hasOwnProperty.call(val, key)
+
