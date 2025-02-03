@@ -18,9 +18,9 @@
     "@types/jest": "^29.5.14",
     "@types/mocha": "^10.0.10",
     "babel-jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
     "yarn": "^1.22.22"
   },
-  "type": "module",
   "scripts": {
     "test": "jest --watch",
     "build": "rollup -c rollup.config.js --watch"

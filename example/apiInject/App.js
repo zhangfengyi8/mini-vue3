@@ -40,6 +40,8 @@ const Consumer = {
         }
     },
 
+    template: `<div>Consumer: xxx</div>`,
+
     render() {
         return h("div", {}, `Consumer: - ${this.foo} - ${this.bar} - ${this.baz}`)
     }
