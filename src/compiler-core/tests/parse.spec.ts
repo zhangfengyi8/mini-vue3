@@ -69,7 +69,6 @@ describe("Parse", () => {
     test("Nested element", () => {
         const ast = baseParse("<div><p>hi,</p>{{message}}</div>");
         const text = ast.children[0];
-        console.log(JSON.stringify(text))
 
         expect(text).toStrictEqual({
             type: NodeTypes.ELEMENT,
